@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home Loan Calculator</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/home.css">
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+	</script>
+
+	<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+	</script>
+
+</head>
+
+<body>
+
+
+  <div class="">
+    <nav class="navbar navbar-expand-sm bg-success navbar-light">
+
+      <!-- Brand/logo -->
+      <a class="navbar-brand" href="#">
+        <img src="logo/calculator.png" alt="logo" style="width:40px; display: inline-block">
+				<h6 style="display: inline-block;"><strong> Home Loan Calculator</strong></h6>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#collapse_Navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapse_Navbar">
+        <ul class="navbar-nav" >
+          <li class="nav-item active" id='content-mobile'>
+            <a class="nav-link" href="#">Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="saved.php">Saved Calculations</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+</div>
+<div class="container">
+		<div  class="input">
+      <h2>Enter below</h2>
+      <p>The form below contains 4 input elements</p>
+        <form action="connector.php" method="post">
+        <div class="form-group">
+          <label for="price" >Purchase price:</label> <p id="err1" align="right" style="color: red; display: inline-block;"></p>
+          <input onkeyup="stoppedTyping(id)" type="number" required name='Purchase' placeholder="0" min='5000' class="form-control" id="price">
+        </div>
+        <div class="form-group">
+          <label for="Deposit" >Deposit paid:</label><p id="err2" align="right" style="color: red; display: inline-block;"></p>
+          <input onkeyup="stoppedTyping(id)" type="number" name='deposit' placeholder="0" min="0" class="form-control" id="deposit">
+        </div>
+        <div class="form-group">
+          <label  for="yrs" >Bond term in Years:</label> <p id="err3" align="right" style="color: red; display: inline-block;"></p>
+          <input onkeyup="stoppedTyping(id)" type="number" name='years' min="1" placeholder="0" class="form-control" id="yrs">
+        </div>
+        <div class="form-group" name='rate'>
+          <label for="rate" >Fixed Rate %:</label><p id="err4" align="right" style="color: red; display: inline-block;"></p>
+          <input onkeyup="stoppedTyping(id)" type="number" name='rate' min="0" max="27.5" step="0.1" placeholder="0.0" class="form-control" id="rate">
+        </div>
+      </form>
+      
+    	<div class="button">
+      	<button id='calculate' type="button" class="btn btn-primary" onclick="calculate()" disabled="disabled">Calculate</button>
+    	</div>
+		</div>
+
+      <div class="results" >
+      <h2 id="popTitile" style="color: #ffffff;"></h2>
+      <div class="output">
+		<h3 id='montlyTitile' ></h3>
+        <h3 id="Payment" ></h3>
+		<h5 id="interest" ></h5>
+		<h5 id="total"></h5>
+      </div>
+      <div id="btnq" class="button2">
+
+      </div>
+			<div id='table'>
+			</div>
+			<div id="chartContainer"  style=" margin-top:30px;margin-bottom: 20px;height: auto; width: auto;"></div>
+    </div>
+	</div>
+
+	<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Saving Loan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <form class="form-group">
+            <label for="recipient-name" class="col-form-label">Loan Name:</label>
+            <input type="text" name="name" class="form-control" id="recipient-name">
+          </form>
+        
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+        <button type="button" class="btn btn-primary" onclick="post()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="scr/homecalculator.js" ></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+
+</html>
